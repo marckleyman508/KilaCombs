@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KilaCombs — Fuel. Train. Dominate. NYC</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold:#F5A623; --gold-d:#C8840A; --gold-l:#FFD06B; --gold-xs:rgba(245,166,35,.06);
+  --black:#080808; --dark:#0f0f0f; --mid:#181818; --mid2:#222; --mid3:#2a2a2a;
+  --white:#F5F0E8; --grey:#888; --grey2:#555;
+  --red:#e74c3c; --green:#27AE60; --blue:#2980B9; --purp:#8E44AD;
+  --nyc:#FF3B30;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:'Barlow',sans-serif;min-height:100vh;overflow-x:hidden;}
+
+/* ── SCROLLBAR ─────────────────────────────────── */
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-thumb{background:var(--gold-d);}
+
+/* ── NAV ───────────────────────────────────────── */
+nav{
+  position:sticky;top:0;z-index:300;
+  background:rgba(8,8,8,.97);backdrop-filter:blur(16px);
+  padding:0 48px;display:flex;justify-content:space-between;align-items:stretch;
+  border-bottom:1px solid rgba(245,166,35,.1);height:62px;
+}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.1em;color:var(--gold);text-decoration:none;display:flex;align-items:center;gap:10px;}
+.nav-logo span{font-size:.6rem;letter-spacing:.35em;text-transform:uppercase;color:var(--grey);font-family:'Barlow Condensed',sans-serif;font-weight:700;align-self:flex-end;padding-bottom:6px;}
+.nav-links{display:flex;gap:0;align-items:stretch;}
+.nav-link{color:var(--grey);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;padding:0 18px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;}
+.nav-link:hover{color:var(--white);border-bottom-color:rgba(245,166,35,.3);}
+.nav-link.active{color:var(--gold);border-bottom-color:var(--gold);}
+.nav-cta{background:var(--gold);color:var(--black)!important;font-weight:700;margin:10px 0 10px 16px;padding:0 20px;border-bottom:none!important;}
+.nav-cta:hover{background:var(--gold-l)!important;}
+.nav-badge{background:var(--nyc);color:#fff;font-size:.5rem;letter-spacing:.1em;padding:2px 5px;vertical-align:middle;margin-left:4px;font-weight:700;}
+
+/* ── ADMIN BAR ─────────────────────────────────── */
+.admin-bar{background:#0d0d00;border-bottom:1px solid rgba(245,166,35,.12);padding:7px 48px;display:none;align-items:center;gap:16px;font-family:'Barlow Condensed',sans-serif;font-size:.7rem;flex-wrap:wrap;}
+.ab-dot2{width:6px;height:6px;border-radius:50%;display:inline-block;flex-shrink:0;}
+.ab-dot2.live{background:var(--green);box-shadow:0 0 5px var(--green);animation:abpulse 2s infinite;}
+.ab-dot2.off{background:var(--red);}
+@keyframes abpulse{0%,100%{opacity:1}50%{opacity:.4}}
+.ab-sep{color:rgba(136,136,136,.25);}
+.ab-key{color:var(--grey);letter-spacing:.1em;text-transform:uppercase;}
+.ab-val{color:var(--gold);font-weight:700;}
+.ab-dl{margin-left:auto;background:rgba(245,166,35,.08);border:1px solid rgba(245,166,35,.2);color:var(--gold);padding:4px 14px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;text-decoration:none;font-size:.65rem;transition:background .2s;}
+.ab-dl:hover{background:rgba(245,166,35,.18);}
+
+/* ── HERO ──────────────────────────────────────── */
+.hero{
+  min-height:94vh;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:80px 48px 72px;position:relative;overflow:hidden;
+  background:var(--black);
+}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 70% 40%,rgba(245,166,35,.07) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 20% 80%,rgba(255,59,48,.04) 0%,transparent 60%);}
+.hero-grid-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(245,166,35,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(245,166,35,.03) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;}
+.hero-watermark{position:absolute;right:-60px;top:50%;transform:translateY(-50%);font-family:'Bebas Neue',sans-serif;font-size:22vw;color:rgba(245,166,35,.025);line-height:1;pointer-events:none;white-space:nowrap;letter-spacing:-.02em;}
+.hero-nyc{position:absolute;top:80px;right:48px;font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:.45em;text-transform:uppercase;color:var(--nyc);border:1px solid rgba(255,59,48,.3);padding:6px 14px;}
+.hero-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:.72rem;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+.hero-eyebrow::before{content:'';width:36px;height:1px;background:var(--gold);}
+.hero-h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,10vw,11rem);line-height:.88;margin-bottom:28px;letter-spacing:-.01em;}
+.hero-h1 em{color:var(--gold);font-style:normal;display:block;}
+.hero-h1 small{font-size:.38em;color:var(--grey);display:block;letter-spacing:.12em;font-family:'Barlow Condensed',sans-serif;font-weight:700;margin-top:4px;}
+.hero-p{font-size:1.1rem;font-weight:300;color:rgba(245,240,232,.55);max-width:540px;line-height:1.8;margin-bottom:48px;}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-primary{background:var(--gold);color:var(--black);padding:16px 36px;font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.08em;text-decoration:none;transition:background .2s,transform .15s;display:inline-block;}
+.btn-primary:hover{background:var(--gold-l);transform:translateY(-2px);}
+.btn-ghost{border:1px solid rgba(245,166,35,.3);color:var(--gold);padding:16px 36px;font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.08em;text-decoration:none;transition:border-color .2s,background .2s;display:inline-block;}
+.btn-ghost:hover{border-color:var(--gold);background:rgba(245,166,35,.07);}
+.hero-stats{display:flex;gap:0;margin-top:56px;border-top:1px solid rgba(255,255,255,.06);padding-top:36px;}
+.hstat{flex:1;padding-right:40px;border-right:1px solid rgba(255,255,255,.06);margin-right:40px;}
+.hstat:last-child{border-right:none;padding-right:0;margin-right:0;}
+.hstat-n{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:var(--gold);line-height:1;}
+.hstat-l{font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--grey);margin-top:3px;}
+
+/* ── SECTION SHELL ─────────────────────────────── */
+.section{padding:80px 48px;}
+.section-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.section-eyebrow::before{content:'';width:24px;height:1px;background:var(--gold);}
+.section-h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8rem,5vw,5.5rem);line-height:.9;margin-bottom:16px;}
+.section-sub{font-size:.95rem;font-weight:300;color:rgba(245,240,232,.5);max-width:560px;line-height:1.8;margin-bottom:52px;}
+.gold{color:var(--gold);}
+
+/* ── SECTION DIVIDERS ──────────────────────────── */
+.sec-div{height:1px;background:linear-gradient(to right,transparent,rgba(245,166,35,.15),transparent);}
+
+/* ── TRAINING SECTION ──────────────────────────── */
+#training{background:linear-gradient(180deg,var(--black) 0%,var(--dark) 100%);}
+
+.training-layout{display:grid;grid-template-columns:1fr 400px;gap:48px;align-items:start;}
+
+.training-packages{display:flex;flex-direction:column;gap:16px;}
+
+.pkg-card{background:var(--mid);border:1px solid rgba(255,255,255,.07);overflow:hidden;transition:border-color .3s,transform .2s;cursor:pointer;position:relative;}
+.pkg-card:hover{border-color:rgba(245,166,35,.25);transform:translateY(-2px);}
+.pkg-card.selected{border-color:var(--gold);}
+.pkg-card.selected::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold);}
+.pkg-card.featured{border-color:rgba(245,166,35,.3);}
+.pkg-card.featured::after{content:'MOST POPULAR';position:absolute;top:16px;right:16px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.58rem;letter-spacing:.22em;background:var(--gold);color:var(--black);padding:3px 8px;}
+.pkg-header{display:flex;align-items:center;gap:0;}
+.pkg-icon-box{width:76px;flex-shrink:0;background:var(--dark);display:flex;align-items:center;justify-content:center;font-size:2rem;padding:20px 0;border-right:1px solid rgba(255,255,255,.06);align-self:stretch;}
+.pkg-head-info{padding:20px 24px;flex:1;}
+.pkg-type{font-family:'Barlow Condensed',sans-serif;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--grey);margin-bottom:4px;}
+.pkg-name{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.02em;color:var(--white);}
+.pkg-tagline{font-size:.75rem;color:var(--grey);font-weight:300;margin-top:2px;}
+.pkg-price-box{padding:20px 24px 20px 0;text-align:right;flex-shrink:0;}
+.pkg-price{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--gold);line-height:1;}
+.pkg-price-sub{font-size:.62rem;color:var(--grey);letter-spacing:.08em;}
+.pkg-body{padding:0 24px 20px 24px;display:none;}
+.pkg-card.selected .pkg-body,.pkg-card.open .pkg-body{display:block;}
+.pkg-features{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:16px;}
+.pkg-feat{font-size:.76rem;color:rgba(245,240,232,.7);display:flex;align-items:flex-start;gap:7px;line-height:1.45;}
+.pkg-feat::before{content:'✓';color:var(--gold);font-size:.7rem;flex-shrink:0;margin-top:1px;}
+.pkg-feat.full-width{grid-column:1/-1;}
+.pkg-add-btn{background:var(--gold);color:var(--black);border:none;padding:12px 24px;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.08em;cursor:pointer;transition:background .2s;width:100%;}
+.pkg-add-btn:hover{background:var(--gold-l);}
+
+/* session type toggle */
+.session-toggle{display:flex;gap:0;margin-bottom:32px;}
+.st-btn{flex:1;background:var(--mid);border:1px solid rgba(255,255,255,.08);color:var(--grey);padding:12px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:all .2s;text-align:center;}
+.st-btn:first-child{border-right:none;}
+.st-btn.active{background:rgba(245,166,35,.1);border-color:var(--gold);color:var(--gold);}
+
+/* ── NUTRITION / PLANS ─────────────────────────── */
+#nutrition{background:var(--dark);}
+.nutrition-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:56px;}
+.nutr-card{background:var(--mid);padding:36px 28px;position:relative;overflow:hidden;transition:transform .25s;}
+.nutr-card:hover{transform:translateY(-4px);}
+.nutr-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+.nutr-card.nc1::before{background:var(--gold);}
+.nutr-card.nc2::before{background:var(--green);}
+.nutr-card.nc3::before{background:var(--blue);}
+.nutr-watermark{position:absolute;right:-10px;bottom:-20px;font-family:'Bebas Neue',sans-serif;font-size:6rem;color:rgba(255,255,255,.025);line-height:1;pointer-events:none;}
+.nutr-icon{font-size:2.4rem;margin-bottom:18px;}
+.nutr-title{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;margin-bottom:6px;line-height:1;}
+.nutr-sub{font-size:.78rem;color:var(--grey);font-weight:300;line-height:1.6;margin-bottom:20px;}
+.nutr-price{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;color:var(--gold);margin-bottom:4px;line-height:1;}
+.nutr-psub{font-size:.65rem;color:var(--grey);letter-spacing:.1em;margin-bottom:20px;}
+.nutr-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:24px;}
+.nutr-li{font-size:.76rem;color:rgba(245,240,232,.7);display:flex;align-items:flex-start;gap:8px;line-height:1.4;}
+.nutr-li::before{content:'→';color:var(--gold);flex-shrink:0;}
+.nutr-btn{width:100%;background:var(--mid2);border:1px solid rgba(245,166,35,.25);color:var(--gold);padding:11px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:background .2s,border-color .2s;}
+.nutr-btn:hover{background:rgba(245,166,35,.1);border-color:var(--gold);}
+.nutr-btn.selected-pkg{background:var(--gold);color:var(--black);border-color:var(--gold);}
+
+/* ── WORKOUT PLANS ─────────────────────────────── */
+#workout{background:var(--black);}
+.wp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+.wp-card{background:var(--mid);padding:28px 22px;cursor:pointer;border:1px solid transparent;transition:border-color .25s,transform .2s;}
+.wp-card:hover{border-color:rgba(245,166,35,.2);transform:translateY(-3px);}
+.wp-card.wsel{border-color:var(--gold);background:rgba(245,166,35,.04);}
+.wp-level{font-family:'Barlow Condensed',sans-serif;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:12px;}
+.wp-level.beg{color:var(--green);}
+.wp-level.int{color:var(--gold);}
+.wp-level.adv{color:var(--red);}
+.wp-level.ath{color:var(--purp);}
+.wp-name{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;line-height:1;margin-bottom:8px;}
+.wp-meta{font-size:.72rem;color:var(--grey);line-height:1.55;margin-bottom:16px;}
+.wp-price{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;color:var(--gold);}
+.wp-psub{font-size:.62rem;color:var(--grey);}
+.wp-check{width:20px;height:20px;border:1px solid rgba(245,166,35,.3);margin-top:12px;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:var(--gold);transition:background .2s;}
+.wp-card.wsel .wp-check{background:var(--gold);color:var(--black);border-color:var(--gold);}
+
+/* ── MERCH ─────────────────────────────────────── */
+#merch{background:var(--dark);}
+.merch-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:40px;}
+.merch-card{background:var(--mid);border:1px solid rgba(255,255,255,.06);overflow:hidden;transition:border-color .25s,transform .2s;cursor:pointer;}
+.merch-card:hover{border-color:rgba(245,166,35,.25);transform:translateY(-3px);}
+.merch-visual{background:var(--dark);aspect-ratio:1;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.05);}
+.merch-visual-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:8rem;color:rgba(245,166,35,.04);letter-spacing:-.05em;pointer-events:none;user-select:none;}
+.merch-emoji{font-size:3.5rem;position:relative;z-index:1;transition:transform .3s;}
+.merch-card:hover .merch-emoji{transform:scale(1.1);}
+.merch-badge{position:absolute;top:10px;left:10px;background:var(--gold);color:var(--black);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.55rem;letter-spacing:.15em;padding:3px 8px;}
+.merch-info{padding:16px 18px;}
+.merch-cat{font-family:'Barlow Condensed',sans-serif;font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--grey);margin-bottom:5px;}
+.merch-name{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;margin-bottom:6px;line-height:1.1;}
+.merch-price{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.95rem;color:var(--gold);}
+.merch-sizes{display:flex;gap:5px;margin-top:10px;flex-wrap:wrap;}
+.sz{font-size:.6rem;letter-spacing:.1em;border:1px solid rgba(255,255,255,.1);color:var(--grey);padding:3px 7px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-weight:600;transition:all .2s;}
+.sz.active{border-color:var(--gold);color:var(--gold);}
+.merch-add{width:100%;background:var(--mid2);border:1px solid rgba(245,166,35,.2);color:var(--gold);padding:9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:all .2s;margin-top:10px;}
+.merch-add:hover{background:var(--gold);color:var(--black);}
+
+/* ── WHOLESALE ─────────────────────────────────── */
+#wholesale{background:var(--black);}
+.ws-layout{display:grid;grid-template-columns:1fr 420px;gap:0;}
+.ws-left{padding-right:48px;border-right:1px solid rgba(255,255,255,.06);}
+
+.flavor-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:24px;}
+.flavor-card{background:var(--mid);border:2px solid transparent;padding:20px 14px;cursor:pointer;transition:border-color .2s,background .2s;text-align:center;position:relative;}
+.flavor-card:hover{border-color:rgba(245,166,35,.3);background:#161600;}
+.flavor-card.fsel{border-color:var(--gold);background:rgba(245,166,35,.05);}
+.flavor-card.fsel::after{content:'✓';position:absolute;top:8px;right:10px;color:var(--gold);font-size:.7rem;font-weight:700;}
+.fc-em{font-size:2rem;margin-bottom:8px;}
+.fc-n{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px;}
+.fc-d{font-size:.68rem;color:var(--grey);line-height:1.4;}
+
+.qty-row{display:flex;align-items:center;gap:0;margin-bottom:10px;}
+.qty-btn{width:46px;height:46px;background:var(--mid2);border:1px solid rgba(255,255,255,.1);color:var(--white);font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s;}
+.qty-btn:hover{background:rgba(245,166,35,.15);color:var(--gold);}
+.qty-mid{flex:1;height:46px;background:var(--dark);border:1px solid rgba(255,255,255,.08);border-left:none;border-right:none;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;gap:6px;}
+.qty-packs{color:var(--gold);}
+.qty-u{font-size:.7rem;color:var(--grey);}
+
+.disc-toggle-head{display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:14px 18px;background:var(--mid);border:1px solid rgba(255,255,255,.07);margin-top:20px;}
+.dt-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;}
+.dt-arrow{color:var(--gold);transition:transform .3s;}
+.disc-panel{background:var(--mid);border:1px solid rgba(255,255,255,.07);border-top:none;display:none;}
+.disc-panel.open{display:block;}
+.dc-cat{padding:16px 18px;border-bottom:1px solid rgba(255,255,255,.05);}
+.dc-cat:last-child{border-bottom:none;}
+.dc-cat-head{display:flex;align-items:center;gap:10px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;flex-wrap:wrap;}
+.dc-pct{color:var(--gold);margin-left:auto;}
+.dc-codes{display:flex;flex-direction:column;gap:7px;}
+.dc-row{display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.dc-desc{font-size:.7rem;color:var(--grey);flex:1;}
+.dc-code{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.1em;background:rgba(245,166,35,.07);border:1px solid rgba(245,166,35,.2);color:var(--gold);padding:4px 10px;cursor:pointer;transition:background .2s;white-space:nowrap;flex-shrink:0;}
+.dc-code:hover{background:rgba(245,166,35,.18);}
+
+/* ── CART / SIDEBAR ─────────────────────────────── */
+.cart-sidebar{position:sticky;top:62px;height:calc(100vh - 62px);background:var(--dark);display:flex;flex-direction:column;border-left:1px solid rgba(255,255,255,.05);overflow-y:auto;}
+.cart-sidebar::-webkit-scrollbar{width:2px;}
+.cart-sidebar::-webkit-scrollbar-thumb{background:rgba(245,166,35,.2);}
+.cart-head{padding:22px 24px 16px;border-bottom:1px solid rgba(255,255,255,.06);}
+.cart-title{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--white);}
+.cart-count{font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--grey);margin-top:2px;}
+.cart-body{padding:20px 24px;flex:1;}
+
+/* cart items */
+.cart-items{display:flex;flex-direction:column;gap:0;margin-bottom:16px;}
+.cart-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05);gap:10px;}
+.ci-name{font-size:.78rem;flex:1;color:var(--white);line-height:1.35;}
+.ci-sub{font-size:.65rem;color:var(--grey);}
+.ci-price{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;color:var(--gold);white-space:nowrap;}
+.ci-remove{background:none;border:none;color:var(--grey2);cursor:pointer;font-size:.8rem;padding:2px 5px;transition:color .2s;}
+.ci-remove:hover{color:var(--red);}
+.cart-empty{font-size:.8rem;color:var(--grey2);text-align:center;padding:30px 0;font-style:italic;}
+
+/* order form */
+.form-sec-label{display:block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.64rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;margin-top:18px;}
+.form-sec-label:first-of-type{margin-top:0;}
+.fg{display:flex;flex-direction:column;gap:4px;margin-bottom:9px;}
+.fl2{font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);}
+.fi{background:var(--mid);border:1px solid rgba(255,255,255,.09);color:var(--white);padding:9px 12px;font-family:'Barlow',sans-serif;font-size:.84rem;outline:none;width:100%;transition:border-color .2s;}
+.fi:focus{border-color:rgba(245,166,35,.4);}
+.fi.err{border-color:var(--red);animation:shake .3s;}
+.fi-sel{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:30px;}
+.form-row2{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+
+/* cart summary */
+.cart-summary{background:var(--mid);padding:14px;margin-top:4px;border:1px solid rgba(245,166,35,.08);}
+.cs-row{display:flex;justify-content:space-between;font-size:.76rem;color:var(--grey);margin-bottom:5px;}
+.cs-disc{color:var(--green);}
+.cs-divider{border:none;border-top:1px solid rgba(255,255,255,.07);margin:7px 0;}
+.cs-total{display:flex;justify-content:space-between;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;}
+.cs-total-v{color:var(--gold);}
+
+/* disc input */
+.disc-input-wrap{display:flex;gap:0;margin:10px 0 5px;}
+.di{flex:1;background:var(--mid);border:1px solid rgba(255,255,255,.09);border-right:none;color:var(--white);padding:9px 12px;font-family:'Barlow',sans-serif;font-size:.82rem;text-transform:uppercase;outline:none;}
+.di::placeholder{text-transform:none;color:var(--grey);font-size:.76rem;}
+.di-apply{background:var(--mid);border:1px solid rgba(245,166,35,.25);color:var(--gold);padding:9px 14px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;transition:background .2s;white-space:nowrap;}
+.di-apply:hover{background:rgba(245,166,35,.12);}
+.disc-msg2{font-size:.7rem;padding:6px 9px;margin-bottom:6px;}
+.disc-msg2.ok{background:rgba(39,174,96,.08);color:var(--green);border-left:2px solid var(--green);}
+.disc-msg2.bad{background:rgba(231,76,60,.08);color:var(--red);border-left:2px solid var(--red);}
+
+.checkout-btn{width:100%;background:var(--gold);color:var(--black);border:none;cursor:pointer;font-family:'Bebas Neue',sans-serif;font-size:1.45rem;letter-spacing:.08em;padding:17px;transition:background .2s,transform .15s;margin-top:12px;margin-bottom:8px;}
+.checkout-btn:hover{background:var(--gold-l);transform:translateY(-1px);}
+.checkout-btn:disabled{background:var(--mid2);color:var(--grey);cursor:not-allowed;transform:none;}
+.checkout-note{font-size:.67rem;color:rgba(136,136,136,.5);text-align:center;line-height:1.65;}
+
+/* ── MODALS ─────────────────────────────────────── */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.92);backdrop-filter:blur(10px);z-index:500;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;padding:20px;}
+.overlay.open{opacity:1;pointer-events:all;}
+.modal{background:var(--dark);width:100%;max-width:540px;overflow:hidden;transform:translateY(28px);transition:transform .3s;border:1px solid rgba(245,166,35,.15);}
+.overlay.open .modal{transform:translateY(0);}
+.modal-bar{height:3px;background:linear-gradient(to right,var(--gold-d),var(--gold-l));}
+.modal-bd{padding:44px 40px;text-align:center;}
+.modal-icon{font-size:3.6rem;margin-bottom:16px;}
+.modal-h{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:var(--gold);margin-bottom:10px;}
+.modal-oid{font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--grey);background:var(--mid);padding:8px 18px;display:inline-block;margin-bottom:14px;}
+.modal-detail{font-size:.8rem;color:var(--grey);margin-bottom:28px;line-height:1.75;}
+.modal-btn{background:var(--gold);color:var(--black);padding:13px 34px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;letter-spacing:.15em;text-transform:uppercase;border:none;cursor:pointer;}
+.modal-btn:hover{background:var(--gold-l);}
+
+/* ── TOASTS ─────────────────────────────────────── */
+.toasts{position:fixed;bottom:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:8px;}
+.toast{background:var(--mid);border-left:3px solid var(--gold);padding:12px 16px;font-family:'Barlow Condensed',sans-serif;font-size:.8rem;letter-spacing:.04em;max-width:280px;transform:translateX(120%);transition:transform .3s;box-shadow:0 4px 20px rgba(0,0,0,.5);}
+.toast.show{transform:translateX(0);}
+.toast.ok{border-color:var(--green);}
+.toast.bad{border-color:var(--red);}
+.spin{display:inline-block;width:13px;height:13px;border:2px solid rgba(0,0,0,.25);border-top-color:#000;border-radius:50%;animation:sp .6s linear infinite;vertical-align:middle;}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+/* ── FOOTER ─────────────────────────────────────── */
+footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding:56px 48px 32px;}
+.footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px;}
+.footer-brand{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--gold);margin-bottom:10px;}
+.footer-tagline{font-size:.8rem;color:var(--grey);font-weight:300;line-height:1.7;margin-bottom:18px;}
+.footer-nyc{font-family:'Barlow Condensed',sans-serif;font-size:.62rem;letter-spacing:.35em;text-transform:uppercase;color:var(--nyc);}
+.footer-col-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.footer-links a{color:var(--grey);text-decoration:none;font-size:.8rem;transition:color .2s;}
+.footer-links a:hover{color:var(--white);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.05);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:.7rem;color:var(--grey);}
+.footer-bottom a{color:var(--grey);text-decoration:none;}
+
+/* ── RESPONSIVE ─────────────────────────────────── */
+@media(max-width:1100px){
+  .training-layout,.ws-layout{grid-template-columns:1fr;}
+  .cart-sidebar{position:static;height:auto;border-left:none;border-top:1px solid rgba(255,255,255,.06);}
+  .nutrition-grid{grid-template-columns:1fr 1fr;}
+  .wp-grid{grid-template-columns:repeat(2,1fr);}
+  .merch-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:700px){
+  nav{padding:0 20px;}
+  .nav-links .nav-link:not(.nav-cta){display:none;}
+  .hero,.section{padding:60px 24px;}
+  .admin-bar{padding:7px 20px;}
+  .nutrition-grid,.wp-grid{grid-template-columns:1fr;}
+  .merch-grid{grid-template-columns:repeat(2,1fr);}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .hero-stats{flex-direction:column;gap:20px;}
+  .hstat{border-right:none;padding-right:0;margin-right:0;border-bottom:1px solid rgba(255,255,255,.06);padding-bottom:20px;}
+  .hstat:last-child{border-bottom:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ──────────────────────────────────────────────────────────────── -->
+<nav>
+  <a href="#" class="nav-logo">KilaCombs <span>NYC</span></a>
+  <div class="nav-links">
+    <a href="#training" class="nav-link">Training</a>
+    <a href="#nutrition" class="nav-link">Nutrition</a>
+    <a href="#workout" class="nav-link">Plans</a>
+    <a href="#merch" class="nav-link">Merch</a>
+    <a href="#wholesale" class="nav-link">Wholesale</a>
+    <a href="#order-form" class="nav-link nav-cta">Book Now</a>
+  </div>
+</nav>
+
+<!-- ── ADMIN BAR ─────────────────────────────────────────────────────────── -->
+<div class="admin-bar" id="adminBar">
+  <span class="ab-dot2" id="abDot"></span>
+  <span class="ab-key">Server</span><span class="ab-val" id="abStatus">—</span>
+  <span class="ab-sep">·</span>
+  <span class="ab-key">Orders</span><span class="ab-val" id="abOrders">—</span>
+  <span class="ab-sep">·</span>
+  <span class="ab-key">Revenue</span><span class="ab-val" id="abRevenue">—</span>
+  <span class="ab-sep">·</span>
+  <span class="ab-key">Signups</span><span class="ab-val" id="abSignups">—</span>
+  <a href="#" class="ab-dl" id="abDl" onclick="dlExcel(event)">⬇ Download Excel</a>
+</div>
+
+<!-- ── HERO ──────────────────────────────────────────────────────────────── -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-watermark">KC</div>
+  <div class="hero-nyc">📍 New York City</div>
+  <p class="hero-eyebrow">Honey · Strength · Performance</p>
+  <h1 class="hero-h1">
+    Fuel.<em>Train.</em>
+    <small>Dominate NYC</small>
+  </h1>
+  <p class="hero-p">Natural honey-based energy. Elite personal training in NYC & online. Custom nutrition. Merch built for athletes.</p>
+  <div class="hero-actions">
+    <a href="#training" class="btn-primary">Book A Session — $50</a>
+    <a href="#wholesale" class="btn-ghost">Wholesale Orders</a>
+  </div>
+  <div class="hero-stats">
+    <div class="hstat"><div class="hstat-n">$50</div><div class="hstat-l">Per Session</div></div>
+    <div class="hstat"><div class="hstat-n">NYC</div><div class="hstat-l">In-Person & Online</div></div>
+    <div class="hstat"><div class="hstat-n">3</div><div class="hstat-l">Energy Variants</div></div>
+    <div class="hstat"><div class="hstat-n">$3</div><div class="hstat-l">Per Pack Wholesale</div></div>
+  </div>
+</section>
+
+<div class="sec-div"></div>
+
+<!-- ── TRAINING ──────────────────────────────────────────────────────────── -->
+<section class="section" id="training">
+  <p class="section-eyebrow">Personal Training</p>
+  <h2 class="section-h2">Train With <span class="gold">KilaCombs</span></h2>
+  <p class="section-sub">In-person sessions in NYC or live online coaching. Every session $50. Built for athletes who refuse to settle.</p>
+
+  <div class="session-toggle">
+    <button class="st-btn active" id="stIn" onclick="setSessionType('inperson')">📍 In-Person · NYC</button>
+    <button class="st-btn" id="stOn" onclick="setSessionType('online')">💻 Online · Anywhere</button>
+  </div>
+
+  <div class="training-layout">
+    <div class="training-packages" id="pkgList">
+      <!-- rendered by JS -->
+    </div>
+    <div>
+      <!-- Quick Book Panel -->
+      <div style="background:var(--mid);border:1px solid rgba(245,166,35,.15);padding:28px;position:sticky;top:80px;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Quick Add</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;margin-bottom:4px;" id="qbName">Select a package</div>
+        <div style="font-size:.8rem;color:var(--grey);margin-bottom:20px;" id="qbDesc">Click any training package on the left</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:var(--gold);line-height:1;margin-bottom:4px;" id="qbPrice">—</div>
+        <div style="font-size:.68rem;color:var(--grey);letter-spacing:.1em;margin-bottom:20px;" id="qbPsub"></div>
+        <button class="pkg-add-btn" id="qbBtn" onclick="addSelectedPkg()" disabled>Select a Package First</button>
+        <div style="margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.07);">
+          <div style="font-size:.68rem;color:var(--grey);line-height:1.65;">
+            📍 NYC sessions: Manhattan, Brooklyn, Bronx<br>
+            💻 Online: Zoom / Google Meet link sent on booking<br>
+            ✦ All sessions include energy pack samples
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sec-div"></div>
+
+<!-- ── NUTRITION ─────────────────────────────────────────────────────────── -->
+<section class="section" id="nutrition">
+  <p class="section-eyebrow">Nutrition Programs</p>
+  <h2 class="section-h2">Eat To <span class="gold">Win</span></h2>
+  <p class="section-sub">Custom nutrition plans built around your goals, lifestyle, and the KilaCombs fuel system. Real food. Real results.</p>
+
+  <div class="nutrition-grid">
+    <div class="nutr-card nc1">
+      <div class="nutr-watermark">BASE</div>
+      <div class="nutr-icon">🥗</div>
+      <div class="nutr-title">Starter Nutrition</div>
+      <div class="nutr-sub">Foundational macro plan to clean up your diet and build sustainable habits.</div>
+      <div class="nutr-price">$75</div>
+      <div class="nutr-psub">ONE-TIME · DIGITAL DELIVERY</div>
+      <ul class="nutr-list">
+        <li class="nutr-li">7-day custom meal plan</li>
+        <li class="nutr-li">Macro targets (calories, protein, carbs)</li>
+        <li class="nutr-li">Grocery shopping guide</li>
+        <li class="nutr-li">KilaCombs fueling protocol</li>
+        <li class="nutr-li">PDF + Google Sheets tracker</li>
+      </ul>
+      <button class="nutr-btn" onclick="addNutrition('starter')" id="nbtn-starter">Add to Cart</button>
+    </div>
+    <div class="nutr-card nc2" style="transform:none;">
+      <div class="nutr-watermark">PRO</div>
+      <div class="nutr-icon">⚡</div>
+      <div class="nutr-title">Athlete Nutrition</div>
+      <div class="nutr-sub">Performance-focused plan for athletes in training. Periodized around your workout schedule.</div>
+      <div class="nutr-price">$145</div>
+      <div class="nutr-psub">ONE-TIME · INCLUDES 30-MIN CONSULT</div>
+      <ul class="nutr-list">
+        <li class="nutr-li">28-day periodized meal plan</li>
+        <li class="nutr-li">Pre/intra/post workout nutrition</li>
+        <li class="nutr-li">Sport-specific carb cycling</li>
+        <li class="nutr-li">Supplement stack recommendations</li>
+        <li class="nutr-li">30-min video consult call</li>
+        <li class="nutr-li">2-week check-in & adjustments</li>
+      </ul>
+      <button class="nutr-btn" onclick="addNutrition('athlete')" id="nbtn-athlete">Add to Cart</button>
+    </div>
+    <div class="nutr-card nc3">
+      <div class="nutr-watermark">VIP</div>
+      <div class="nutr-icon">👑</div>
+      <div class="nutr-title">Elite Coaching</div>
+      <div class="nutr-sub">Full monthly nutrition coaching. Ongoing support, plan adjustments, and direct coach access.</div>
+      <div class="nutr-price">$249</div>
+      <div class="nutr-psub">PER MONTH · ONGOING SUPPORT</div>
+      <ul class="nutr-list">
+        <li class="nutr-li">Fully custom monthly plan</li>
+        <li class="nutr-li">Weekly check-in calls</li>
+        <li class="nutr-li">Unlimited plan adjustments</li>
+        <li class="nutr-li">Direct WhatsApp coach access</li>
+        <li class="nutr-li">Body composition tracking</li>
+        <li class="nutr-li">KilaCombs supply included</li>
+      </ul>
+      <button class="nutr-btn" onclick="addNutrition('elite')" id="nbtn-elite">Add to Cart</button>
+    </div>
+  </div>
+</section>
+
+<div class="sec-div"></div>
+
+<!-- ── WORKOUT PLANS ──────────────────────────────────────────────────────── -->
+<section class="section" id="workout">
+  <p class="section-eyebrow">Workout Plans</p>
+  <h2 class="section-h2">Programs For <span class="gold">Every</span> Level</h2>
+  <p class="section-sub">Downloadable, PDF workout programs you can run anywhere. Written by KilaCombs coaches.</p>
+
+  <div class="wp-grid" id="wpGrid">
+    <!-- rendered by JS -->
+  </div>
+
+  <div style="margin-top:24px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+    <button class="btn-primary" style="font-size:1.1rem;padding:13px 28px;" onclick="addSelectedPlans()">Add Selected Plans to Cart</button>
+    <div style="font-size:.76rem;color:var(--grey);">Digital PDF · Instant delivery after checkout</div>
+  </div>
+</section>
+
+<div class="sec-div"></div>
+
+<!-- ── MERCH ──────────────────────────────────────────────────────────────── -->
+<section class="section" id="merch">
+  <p class="section-eyebrow">KilaCombs Merch</p>
+  <h2 class="section-h2">Wear The <span class="gold">Movement</span></h2>
+  <p class="section-sub">Gear built for athletes. Heavyweight cuts, premium print, built to train and flex in.</p>
+
+  <div class="merch-grid" id="merchGrid">
+    <!-- rendered by JS -->
+  </div>
+</section>
+
+<div class="sec-div"></div>
+
+<!-- ── WHOLESALE ──────────────────────────────────────────────────────────── -->
+<section class="section" id="wholesale" style="padding-bottom:0;">
+  <p class="section-eyebrow">B2B Wholesale</p>
+  <h2 class="section-h2">Fuel Your <span class="gold">Business</span></h2>
+  <p class="section-sub">Gyms, schools, military programs, resellers. $3/pack, 500 pack minimum. Discount programs available.</p>
+</section>
+
+<!-- ── UNIFIED ORDER FORM ─────────────────────────────────────────────────── -->
+<div id="order-form" style="display:grid;grid-template-columns:1fr 400px;background:var(--black);">
+
+  <!-- LEFT: Wholesale config -->
+  <div style="padding:0 48px 80px;">
+    <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--grey);margin-bottom:24px;margin-top:8px;">Energy Pack — Select Variant</div>
+
+    <div class="flavor-grid" id="flavorGrid">
+      <!-- rendered by JS -->
+    </div>
+
+    <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--grey);margin-bottom:12px;">Quantity (500-pack increments)</div>
+    <div class="qty-row">
+      <button class="qty-btn" onclick="changeQty(-1)">−</button>
+      <div class="qty-mid"><span class="qty-packs" id="qtyDisplay">500</span><span class="qty-u">packs · $3.00/ea</span></div>
+      <button class="qty-btn" onclick="changeQty(1)">+</button>
+    </div>
+    <div style="font-size:.72rem;color:var(--grey);margin-bottom:20px;margin-top:6px;">Min 500 · Steps of 500 · <strong style="color:var(--white)">Order total: <span id="wsPreview">$1,500.00</span></strong></div>
+
+    <!-- Discount toggle -->
+    <div class="disc-toggle-head" onclick="toggleDisc()">
+      <span class="dt-title">🏷️ Discount Programs</span>
+      <span class="dt-arrow" id="dtArrow">▾</span>
+    </div>
+    <div class="disc-panel" id="discPanel">
+      <div class="dc-cat">
+        <div class="dc-cat-head"><span>🎓</span>Schools<span class="dc-pct">15% Off</span></div>
+        <div class="dc-codes">
+          <div class="dc-row"><span class="dc-desc">K-12, colleges, university athletics</span><span class="dc-code" onclick="applyCode('SCHOOL15')">SCHOOL15</span></div>
+          <div class="dc-row"><span class="dc-desc">Youth athletic programs</span><span class="dc-code" onclick="applyCode('YOUTHFUEL')">YOUTHFUEL</span></div>
+        </div>
+      </div>
+      <div class="dc-cat">
+        <div class="dc-cat-head"><span>🎖️</span>Veterans / Military<span class="dc-pct">20% Off</span></div>
+        <div class="dc-codes">
+          <div class="dc-row"><span class="dc-desc">Active military units & bases</span><span class="dc-code" onclick="applyCode('MILITARY20')">MILITARY20</span></div>
+          <div class="dc-row"><span class="dc-desc">Veteran-owned businesses</span><span class="dc-code" onclick="applyCode('VETERAN20')">VETERAN20</span></div>
+        </div>
+      </div>
+      <div class="dc-cat">
+        <div class="dc-cat-head"><span>👧</span>Youth / Children<span class="dc-pct">15% Off</span></div>
+        <div class="dc-codes">
+          <div class="dc-row"><span class="dc-desc">Youth sports leagues</span><span class="dc-code" onclick="applyCode('KIDS15')">KIDS15</span></div>
+          <div class="dc-row"><span class="dc-desc">After-school programs</span><span class="dc-code" onclick="applyCode('AFTERSCHOOL')">AFTERSCHOOL</span></div>
+        </div>
+      </div>
+      <div class="dc-cat">
+        <div class="dc-cat-head"><span>🎄</span>Holidays<span class="dc-pct">10% Off</span></div>
+        <div class="dc-codes">
+          <div class="dc-row"><span class="dc-desc">New Year</span><span class="dc-code" onclick="applyCode('NEWYEAR10')">NEWYEAR10</span></div>
+          <div class="dc-row"><span class="dc-desc">July 4th</span><span class="dc-code" onclick="applyCode('JULY4TH')">JULY4TH</span></div>
+          <div class="dc-row"><span class="dc-desc">Black Friday / Cyber Monday</span><span class="dc-code" onclick="applyCode('BFCM10')">BFCM10</span></div>
+          <div class="dc-row"><span class="dc-desc">Holiday Season</span><span class="dc-code" onclick="applyCode('HOLIDAY10')">HOLIDAY10</span></div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-primary" style="margin-top:24px;font-size:1.1rem;padding:13px 28px;" onclick="addWholesaleToCart()">+ Add Energy Packs to Cart</button>
+  </div>
+
+  <!-- RIGHT: Cart Sidebar -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-head">
+      <div class="cart-title">Your Order</div>
+      <div class="cart-count" id="cartCount">0 items</div>
+    </div>
+    <div class="cart-body">
+
+      <!-- Cart items -->
+      <div class="cart-items" id="cartItems">
+        <div class="cart-empty" id="cartEmpty">Your cart is empty.<br>Add training, merch, or energy packs above.</div>
+      </div>
+
+      <!-- Discount input -->
+      <div class="disc-input-wrap">
+        <input class="di" id="discInput" placeholder="Discount code" maxlength="20">
+        <button class="di-apply" onclick="applyDisc()">Apply</button>
+      </div>
+      <div class="disc-msg2" id="discMsg" style="display:none;"></div>
+
+      <!-- Summary -->
+      <div class="cart-summary" id="cartSummary" style="display:none;">
+        <div class="cs-row"><span>Subtotal</span><span id="csub">$0.00</span></div>
+        <div class="cs-row cs-disc" id="cdisc-row" style="display:none;"><span id="cdisc-label">Discount</span><span id="cdisc-val">-$0.00</span></div>
+        <hr class="cs-divider">
+        <div class="cs-total"><span>Total</span><span class="cs-total-v" id="ctotal">$0.00</span></div>
+      </div>
+
+      <!-- Contact Form -->
+      <span class="form-sec-label" style="margin-top:20px;">Contact Info</span>
+      <div class="form-row2">
+        <div class="fg"><label class="fl2">First Name</label><input class="fi" id="fFirst" placeholder="Marcus"></div>
+        <div class="fg"><label class="fl2">Last Name</label><input class="fi" id="fLast" placeholder="Williams"></div>
+      </div>
+      <div class="fg"><label class="fl2">Email</label><input class="fi" id="fEmail" type="email" placeholder="you@example.com"></div>
+      <div class="fg"><label class="fl2">Phone</label><input class="fi" id="fPhone" placeholder="(212) 555-0000"></div>
+
+      <span class="form-sec-label">Business / Organization <span style="font-size:.55rem;color:var(--grey);font-weight:400;letter-spacing:.05em;">(for wholesale only)</span></span>
+      <div class="fg"><label class="fl2">Business Name</label><input class="fi" id="fBiz" placeholder="Iron Gym Athletics"></div>
+      <div class="form-row2">
+        <div class="fg"><label class="fl2">City</label><input class="fi" id="fCity" placeholder="NYC"></div>
+        <div class="fg"><label class="fl2">State</label><input class="fi" id="fState" placeholder="NY" maxlength="2"></div>
+      </div>
+      <div class="fg"><label class="fl2">Business Type</label>
+        <select class="fi fi-sel" id="fBizType">
+          <option value="">Select type…</option>
+          <option>Gym / Fitness Center</option>
+          <option>Wrestling / MMA Academy</option>
+          <option>Nutrition Store</option>
+          <option>School / University</option>
+          <option>Youth Sports Program</option>
+          <option>Military / VA Program</option>
+          <option>Personal Training Business</option>
+          <option>Online Reseller</option>
+          <option>Individual (Non-Wholesale)</option>
+        </select>
+      </div>
+
+      <span class="form-sec-label">Notes</span>
+      <div class="fg"><textarea class="fi" id="fNotes" rows="2" placeholder="Session goals, schedule preferences, special requests…" style="resize:vertical;"></textarea></div>
+
+      <button class="checkout-btn" id="checkoutBtn" onclick="submitOrder()">Place Order</button>
+      <div class="checkout-note">Wholesale orders verified within 24 hrs · Training sessions confirmed by DM/email · NYC based 📍</div>
+    </div>
+  </div>
+</div>
+
+<div class="sec-div"></div>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">KilaCombs</div>
+      <div class="footer-tagline">Natural honey-based performance fuel. Elite training. NYC roots, global reach.</div>
+      <div class="footer-nyc">📍 New York City · Est. 2024</div>
+    </div>
+    <div>
+      <div class="footer-col-title">Train</div>
+      <ul class="footer-links">
+        <li><a href="#training">In-Person Sessions · NYC</a></li>
+        <li><a href="#training">Online Coaching</a></li>
+        <li><a href="#nutrition">Nutrition Plans</a></li>
+        <li><a href="#workout">Workout Programs</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Products</div>
+      <ul class="footer-links">
+        <li><a href="#merch">KilaCombs Merch</a></li>
+        <li><a href="#wholesale">Wholesale Orders</a></li>
+        <li><a href="#wholesale">Energy Packs</a></li>
+        <li><a href="#wholesale">Discount Programs</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Connect</div>
+      <ul class="footer-links">
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">TikTok</a></li>
+        <li><a href="#">YouTube</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 KilaCombs · All rights reserved · New York City</span>
+    <span>Wholesale · Training · Nutrition · Merch</span>
+  </div>
+</footer>
+
+<!-- ── MODAL ──────────────────────────────────────────────────────────────── -->
+<div class="overlay" id="overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="modal-bar"></div>
+    <div class="modal-bd">
+      <div class="modal-icon">🍯</div>
+      <div class="modal-h">Order Received!</div>
+      <div class="modal-oid" id="modalOid"></div>
+      <div class="modal-detail" id="modalDetail"></div>
+      <button class="modal-btn" onclick="closeModal()">Got It — Let's Go 🍯</button>
+    </div>
+  </div>
+</div>
+
+<div class="toasts" id="toasts"></div>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────────────
+const API = (window.location.hostname==='localhost'||window.location.hostname==='127.0.0.1')
+  ? 'http://localhost:3000' : '';
+
+const FLAVORS = {
+  original:  {id:'original',  emoji:'🍯', name:'Original Honey Blend', desc:'Fast clean energy, no crash'},
+  ginger:    {id:'ginger',    emoji:'🫚', name:'Ginger Boost',          desc:'Recovery & anti-inflammation'},
+  bvitamin:  {id:'bvitamin',  emoji:'⚡', name:'B-Vitamin Surge',        desc:'Peak mental & physical output'},
+};
+
+const TRAINING_PKGS = {
+  single_ip:   {id:'single_ip',   type:'inperson', icon:'💪', name:'Single Session',   tagline:'One focused training session',          price:50,  psub:'PER SESSION · IN PERSON · NYC',   sessions:1,  features:['60-min training session','Custom workout for your goals','Form coaching & correction','Energy pack included','Manhattan / Brooklyn / Bronx']},
+  pack5_ip:    {id:'pack5_ip',    type:'inperson', icon:'🔥', name:'5-Session Pack',   tagline:'Build momentum over 5 sessions',         price:225, psub:'5 SESSIONS · SAVE $25',           sessions:5,  features:['5 × 60-min sessions','Progress tracking','Custom program built for you','Energy packs included (5)','Flexible scheduling NYC'],featured:true},
+  pack10_ip:   {id:'pack10_ip',   type:'inperson', icon:'🏆', name:'10-Session Pack',  tagline:'Commit. Transform. Dominate.',           price:425, psub:'10 SESSIONS · SAVE $75',          sessions:10, features:['10 × 60-min sessions','Full program design','Weekly progress reviews','Nutrition guidance included','Priority scheduling','Energy packs included (10)']},
+  monthly_ip:  {id:'monthly_ip',  type:'inperson', icon:'👑', name:'Monthly Unlimited', tagline:'Unlimited sessions for one month',      price:699, psub:'30 DAYS · UNLIMITED SESSIONS',    sessions:null, features:['Unlimited sessions (30 days)','Full training program','Weekly check-ins','Nutrition plan included','Direct coach WhatsApp','All energy packs included']},
+  single_on:   {id:'single_on',   type:'online',   icon:'💻', name:'Online Session',   tagline:'Live Zoom coaching session',             price:50,  psub:'PER SESSION · LIVE ONLINE',       sessions:1,  features:['60-min live Zoom session','Screen-share form review','Custom workout sent after','Video replay sent','Works from any city']},
+  pack5_on:    {id:'pack5_on',    type:'online',   icon:'🌐', name:'5-Session Online', tagline:'Consistent online coaching for 5 sessions', price:225, psub:'5 SESSIONS · SAVE $25 · ONLINE', sessions:5, features:['5 × 60-min Zoom sessions','Custom 5-week program','Progress tracking app','Video replays all sessions','Energy pack shipped to you'],featured:true},
+  pack10_on:   {id:'pack10_on',   type:'online',   icon:'🚀', name:'10-Session Online',tagline:'Full transformation program online',     price:425, psub:'10 SESSIONS · SAVE $75 · ONLINE', sessions:10, features:['10 × 60-min Zoom sessions','Full 10-week program','Bi-weekly progress calls','Nutrition plan included','24/7 support messaging','Energy packs shipped']},
+  vip_online:  {id:'vip_online',  type:'online',   icon:'👑', name:'VIP Online',       tagline:'Full-service remote coaching experience',price:599, psub:'30 DAYS · UNLIMITED ONLINE',      sessions:null, features:['Unlimited Zoom sessions','Fully custom program','Daily check-in messaging','Nutrition plan + adjustments','Video analysis of every session','Energy packs shipped monthly']},
+};
+
+const NUTR_ITEMS = {
+  starter: {id:'nutr_starter', name:'Starter Nutrition Plan', price:75,  icon:'🥗'},
+  athlete: {id:'nutr_athlete', name:'Athlete Nutrition Plan', price:145, icon:'⚡'},
+  elite:   {id:'nutr_elite',   name:'Elite Nutrition Coaching',price:249, icon:'👑',note:'/month'},
+};
+
+const WORKOUT_PLANS = [
+  {id:'wp_beg',  level:'beg', levelLabel:'Beginner',  name:'Foundation Builder',  desc:'12-week foundational program. Perfect starting point.',      price:25,  duration:'12 weeks'},
+  {id:'wp_int',  level:'int', levelLabel:'Intermediate',name:'Power & Strength',  desc:'16-week strength-focused block. Compound movements & volume.',price:35,  duration:'16 weeks'},
+  {id:'wp_adv',  level:'adv', levelLabel:'Advanced',   name:'Elite Athlete Block',desc:'20-week advanced periodization. Serious lifters only.',       price:49,  duration:'20 weeks'},
+  {id:'wp_ath',  level:'ath', levelLabel:'Combat/Athletics',name:'Fight Ready',    desc:'8-week sports performance & conditioning program.',           price:39,  duration:'8 weeks'},
+];
+
+const MERCH_ITEMS = [
+  {id:'mc_tee',      cat:'Apparel', name:'KilaCombs Tee',         emoji:'👕', price:35, badge:'New',     sizes:['S','M','L','XL','2XL']},
+  {id:'mc_hoodie',   cat:'Apparel', name:'Performance Hoodie',    emoji:'🧥', price:65, badge:'',        sizes:['S','M','L','XL','2XL']},
+  {id:'mc_shorts',   cat:'Apparel', name:'Training Shorts',       emoji:'🩳', price:45, badge:'',        sizes:['S','M','L','XL']},
+  {id:'mc_hat',      cat:'Accessories',name:'Snapback Cap',       emoji:'🧢', price:28, badge:'',        sizes:['One Size']},
+  {id:'mc_bottle',   cat:'Gear',    name:'Stainless Shaker',      emoji:'🥤', price:32, badge:'',        sizes:['One Size']},
+  {id:'mc_bag',      cat:'Gear',    name:'Gym Duffel Bag',        emoji:'🎒', price:75, badge:'Limited', sizes:['One Size']},
+  {id:'mc_socks',    cat:'Accessories',name:'Athletic Socks (3pk)',emoji:'🧦', price:18, badge:'',        sizes:['S/M','L/XL']},
+  {id:'mc_wristband',cat:'Accessories',name:'KilaCombs Wristband',emoji:'⌚', price:12, badge:'',        sizes:['One Size']},
+];
+
+const DISC_CODES = {
+  SCHOOL15:{pct:15,label:'School Discount'}, YOUTHFUEL:{pct:15,label:'Youth Fuel Discount'},
+  MILITARY20:{pct:20,label:'Military Discount'}, VETERAN20:{pct:20,label:'Veteran Discount'},
+  KIDS15:{pct:15,label:'Youth Sports Discount'}, AFTERSCHOOL:{pct:15,label:'After-School Discount'},
+  NEWYEAR10:{pct:10,label:'New Year Deal'}, JULY4TH:{pct:10,label:'July 4th Sale'},
+  BFCM10:{pct:10,label:'BFCM Deal'}, HOLIDAY10:{pct:10,label:'Holiday Deal'},
+};
+
+// ── STATE ─────────────────────────────────────────────────────────────────────
+let S = {
+  sessionType: 'inperson',
+  selectedPkg: null,
+  selectedWpIds: [],
+  selectedMerchSizes: {},
+  wsQty: 500,
+  wsFlavor: 'original',
+  cart: [],  // {id, name, price, qty, meta, type}
+  disc: null,
+};
+
+// ── RENDER: Training Packages ─────────────────────────────────────────────────
+function renderPkgs() {
+  const pkgs = Object.values(TRAINING_PKGS).filter(p => p.type === S.sessionType);
+  const el = document.getElementById('pkgList');
+  el.innerHTML = pkgs.map(p => `
+    <div class="pkg-card${p.featured?' featured':''}" id="pkgcard-${p.id}" onclick="selectPkg('${p.id}')">
+      <div class="pkg-header">
+        <div class="pkg-icon-box">${p.icon}</div>
+        <div class="pkg-head-info">
+          <div class="pkg-type">${S.sessionType==='inperson'?'In-Person · NYC':'Online · Zoom'}</div>
+          <div class="pkg-name">${p.name}</div>
+          <div class="pkg-tagline">${p.tagline}</div>
+        </div>
+        <div class="pkg-price-box">
+          <div class="pkg-price">$${p.price}</div>
+          <div class="pkg-price-sub">${p.sessions?p.sessions+' session'+(p.sessions>1?'s':''):'Monthly'}</div>
+        </div>
+      </div>
+      <div class="pkg-body">
+        <ul class="pkg-features">${p.features.map(f=>`<li class="pkg-feat${f.length>40?' full-width':''}">${f}</li>`).join('')}</ul>
+        <button class="pkg-add-btn" onclick="event.stopPropagation();addPkgToCart('${p.id}')">+ Add to Cart — $${p.price}</button>
+      </div>
+    </div>
+  `).join('');
+  updateQuickBook();
+}
+
+function selectPkg(id) {
+  document.querySelectorAll('.pkg-card').forEach(c=>c.classList.remove('selected','open'));
+  const el = document.getElementById('pkgcard-'+id);
+  if(el){ el.classList.add('selected','open'); }
+  S.selectedPkg = id;
+  updateQuickBook();
+}
+
+function updateQuickBook() {
+  const p = S.selectedPkg ? TRAINING_PKGS[S.selectedPkg] : null;
+  document.getElementById('qbName').textContent  = p ? p.name : 'Select a Package';
+  document.getElementById('qbDesc').textContent  = p ? p.tagline : 'Click any training package on the left';
+  document.getElementById('qbPrice').textContent = p ? '$'+p.price : '—';
+  document.getElementById('qbPsub').textContent  = p ? p.psub : '';
+  const btn = document.getElementById('qbBtn');
+  btn.textContent = p ? `+ Add to Cart — $${p.price}` : 'Select a Package First';
+  btn.disabled = !p;
+}
+
+function addSelectedPkg() { if(S.selectedPkg) addPkgToCart(S.selectedPkg); }
+
+function addPkgToCart(id) {
+  const p = TRAINING_PKGS[id];
+  if(!p) return;
+  addToCart({id:'pkg_'+id, name:p.icon+' '+p.name, price:p.price, qty:1,
+    type:'training', meta:p.psub});
+  toast(`${p.icon} ${p.name} added to cart!`,'ok');
+}
+
+// ── RENDER: Workout Plans ─────────────────────────────────────────────────────
+function renderWPs() {
+  document.getElementById('wpGrid').innerHTML = WORKOUT_PLANS.map(p=>`
+    <div class="wp-card" id="wp-${p.id}" onclick="toggleWP('${p.id}')">
+      <div class="wp-level ${p.level}">${p.levelLabel}</div>
+      <div class="wp-name">${p.name}</div>
+      <div class="wp-meta">${p.desc}<br><strong style="color:var(--white)">${p.duration}</strong></div>
+      <div class="wp-price">$${p.price} <span class="wp-psub">· PDF Download</span></div>
+      <div class="wp-check" id="wpc-${p.id}"></div>
+    </div>
+  `).join('');
+}
+
+function toggleWP(id) {
+  const el = document.getElementById('wp-'+id);
+  const idx = S.selectedWpIds.indexOf(id);
+  if(idx>-1){ S.selectedWpIds.splice(idx,1); el.classList.remove('wsel'); }
+  else { S.selectedWpIds.push(id); el.classList.add('wsel'); }
+  document.getElementById('wpc-'+id).textContent = idx>-1?'':'✓';
+}
+
+function addSelectedPlans() {
+  if(!S.selectedWpIds.length){ toast('Select at least one plan first','bad'); return; }
+  S.selectedWpIds.forEach(id=>{
+    const p = WORKOUT_PLANS.find(x=>x.id===id);
+    if(p) addToCart({id:'wp_'+id, name:'📋 '+p.name+' ('+p.levelLabel+')',
+      price:p.price, qty:1, type:'workout', meta:p.duration+' · PDF Download'});
+  });
+  toast(`${S.selectedWpIds.length} plan(s) added to cart!`,'ok');
+  S.selectedWpIds=[];
+  document.querySelectorAll('.wp-card').forEach(c=>c.classList.remove('wsel'));
+  document.querySelectorAll('[id^="wpc-"]').forEach(c=>c.textContent='');
+}
+
+// ── RENDER: Merch ─────────────────────────────────────────────────────────────
+function renderMerch() {
+  document.getElementById('merchGrid').innerHTML = MERCH_ITEMS.map(m=>`
+    <div class="merch-card">
+      <div class="merch-visual">
+        <div class="merch-visual-bg">KC</div>
+        ${m.badge?`<div class="merch-badge">${m.badge}</div>`:''}
+        <div class="merch-emoji">${m.emoji}</div>
+      </div>
+      <div class="merch-info">
+        <div class="merch-cat">${m.cat}</div>
+        <div class="merch-name">${m.name}</div>
+        <div class="merch-price">$${m.price}</div>
+        ${m.sizes.length>1?`
+        <div class="merch-sizes" id="msz-${m.id}">
+          ${m.sizes.map(sz=>`<div class="sz" onclick="selSize('${m.id}','${sz}',this)">${sz}</div>`).join('')}
+        </div>`:'<div style="font-size:.65rem;color:var(--grey);margin-top:8px;">One Size</div>'}
+        <button class="merch-add" onclick="addMerchToCart('${m.id}')">+ Add to Cart</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function selSize(id, sz, el) {
+  document.querySelectorAll(`#msz-${id} .sz`).forEach(s=>s.classList.remove('active'));
+  el.classList.add('active');
+  S.selectedMerchSizes[id] = sz;
+}
+
+function addMerchToCart(id) {
+  const m = MERCH_ITEMS.find(x=>x.id===id);
+  if(!m) return;
+  const sz = S.selectedMerchSizes[id];
+  if(m.sizes.length>1 && m.sizes[0]!=='One Size' && !sz){
+    toast('Select a size first','bad'); return;
+  }
+  const itemId = `merch_${id}${sz?'_'+sz:''}`;
+  addToCart({id:itemId, name:`${m.emoji} ${m.name}${sz?' ('+sz+')':''}`,
+    price:m.price, qty:1, type:'merch', meta:m.cat});
+  toast(`${m.emoji} ${m.name} added!`,'ok');
+}
+
+// ── RENDER: Wholesale Flavors ─────────────────────────────────────────────────
+function renderFlavors() {
+  document.getElementById('flavorGrid').innerHTML = Object.values(FLAVORS).map(f=>`
+    <div class="flavor-card${S.wsFlavor===f.id?' fsel':''}" onclick="selFlavor('${f.id}')">
+      <div class="fc-em">${f.emoji}</div>
+      <div class="fc-n">${f.name}</div>
+      <div class="fc-d">${f.desc}</div>
+    </div>
+  `).join('');
+}
+
+function selFlavor(id) {
+  S.wsFlavor=id;
+  document.querySelectorAll('.flavor-card').forEach(c=>c.classList.remove('fsel'));
+  event.currentTarget.classList.add('fsel');
+}
+
+// ── CART ENGINE ───────────────────────────────────────────────────────────────
+function addToCart(item) {
+  const existing = S.cart.find(c=>c.id===item.id);
+  if(existing){ existing.qty++; }
+  else { S.cart.push({...item, qty:1}); }
+  renderCart();
+}
+
+function removeFromCart(id) {
+  S.cart = S.cart.filter(c=>c.id!==id);
+  renderCart();
+}
+
+function renderCart() {
+  const cartEl = document.getElementById('cartItems');
+  const emptyEl = document.getElementById('cartEmpty');
+  const sumEl = document.getElementById('cartSummary');
+  const btn = document.getElementById('checkoutBtn');
+
+  if(!S.cart.length){
+    emptyEl.style.display='block'; cartEl.innerHTML=''; sumEl.style.display='none';
+    document.getElementById('cartCount').textContent='0 items';
+    btn.disabled=true; btn.textContent='Place Order';
+    return;
+  }
+  emptyEl.style.display='none';
+  cartEl.innerHTML = S.cart.map(item=>`
+    <div class="cart-item">
+      <div>
+        <div class="ci-name">${item.name}</div>
+        ${item.meta?`<div class="ci-sub">${item.meta}</div>`:''}
+        ${item.qty>1?`<div class="ci-sub">Qty: ${item.qty.toLocaleString()}</div>`:''}
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
+        <div class="ci-price">$${(item.price*item.qty).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}</div>
+        <button class="ci-remove" onclick="removeFromCart('${item.id}')" title="Remove">✕</button>
+      </div>
+    </div>
+  `).join('');
+
+  const subtotal = S.cart.reduce((s,c)=>s+c.price*c.qty,0);
+  const discAmt  = S.disc ? subtotal*(S.disc.pct/100) : 0;
+  const total    = subtotal - discAmt;
+
+  document.getElementById('csub').textContent = '$'+subtotal.toFixed(2);
+  const discRow = document.getElementById('cdisc-row');
+  if(S.disc){ discRow.style.display='flex'; document.getElementById('cdisc-label').textContent=S.disc.label+' (-'+S.disc.pct+'%)'; document.getElementById('cdisc-val').textContent='-$'+discAmt.toFixed(2); }
+  else { discRow.style.display='none'; }
+  document.getElementById('ctotal').textContent = '$'+total.toFixed(2);
+  sumEl.style.display='block';
+
+  const n = S.cart.reduce((s,c)=>s+c.qty,0);
+  document.getElementById('cartCount').textContent = n+' item'+(n!==1?'s':'');
+  btn.disabled=false;
+  btn.textContent = 'Place Order — $'+total.toFixed(2);
+}
+
+function cartTotals() {
+  const sub = S.cart.reduce((s,c)=>s+c.price*c.qty,0);
+  const disc = S.disc ? sub*(S.disc.pct/100) : 0;
+  return {sub, disc, total: sub-disc};
+}
+
+// ── WHOLESALE ─────────────────────────────────────────────────────────────────
+function changeQty(dir) {
+  S.wsQty = Math.max(500, S.wsQty + dir*500);
+  document.getElementById('qtyDisplay').textContent = S.wsQty.toLocaleString();
+  document.getElementById('wsPreview').textContent = '$'+(S.wsQty*3).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+}
+
+function addWholesaleToCart() {
+  const fl = FLAVORS[S.wsFlavor];
+  const id = `ws_${S.wsFlavor}_${S.wsQty}`;
+  const existing = S.cart.find(c=>c.id===id);
+  if(existing){ toast('Already in cart — adjust qty if needed','bad'); return; }
+  addToCart({id, name:`${fl.emoji} ${fl.name} Energy Packs`,
+    price:S.wsQty*3, qty:1, type:'wholesale',
+    meta:`${S.wsQty.toLocaleString()} packs @ $3.00/ea`,
+    wsData:{variant:S.wsFlavor, qty:S.wsQty}});
+  toast(`${fl.emoji} ${S.wsQty.toLocaleString()} ${fl.name} packs added!`,'ok');
+}
+
+function applyCode(code) {
+  document.getElementById('discInput').value = code;
+  applyDisc();
+}
+
+function applyDisc() {
+  const code = document.getElementById('discInput').value.trim().toUpperCase();
+  const msgEl = document.getElementById('discMsg');
+  if(!code){ msgEl.style.display='none'; return; }
+  const d = DISC_CODES[code];
+  if(d){
+    S.disc = {code, pct:d.pct, label:d.label};
+    msgEl.className='disc-msg2 ok'; msgEl.textContent=`✓ ${d.label} (${d.pct}% off) applied!`; msgEl.style.display='block';
+    toast(`${d.pct}% discount applied!`,'ok');
+  } else {
+    S.disc=null;
+    msgEl.className='disc-msg2 bad'; msgEl.textContent='✗ Code not found or expired'; msgEl.style.display='block';
+  }
+  renderCart();
+}
+
+// ── NUTRITION ─────────────────────────────────────────────────────────────────
+function addNutrition(key) {
+  const n = NUTR_ITEMS[key];
+  if(!n) return;
+  addToCart({id:'nutr_'+key, name:n.icon+' '+n.name, price:n.price, qty:1,
+    type:'nutrition', meta:n.note?'Per Month':'One-Time · Digital Delivery'});
+  const btn = document.getElementById('nbtn-'+key);
+  if(btn){ btn.textContent='✓ Added'; btn.classList.add('selected-pkg'); }
+  toast(n.icon+' '+n.name+' added!','ok');
+  setTimeout(()=>{ if(btn){btn.textContent='Add to Cart';btn.classList.remove('selected-pkg');} }, 2000);
+}
+
+// ── SESSION TYPE ──────────────────────────────────────────────────────────────
+function setSessionType(type) {
+  S.sessionType = type;
+  document.getElementById('stIn').classList.toggle('active', type==='inperson');
+  document.getElementById('stOn').classList.toggle('active', type==='online');
+  S.selectedPkg = null;
+  renderPkgs();
+}
+
+// ── DISCOUNT PANEL ────────────────────────────────────────────────────────────
+function toggleDisc() {
+  const p = document.getElementById('discPanel');
+  const a = document.getElementById('dtArrow');
+  p.classList.toggle('open');
+  a.textContent = p.classList.contains('open') ? '▴' : '▾';
+}
+
+// ── SUBMIT ────────────────────────────────────────────────────────────────────
+async function submitOrder() {
+  if(!S.cart.length){ toast('Your cart is empty','bad'); return; }
+
+  const req = [
+    {id:'fFirst',msg:'First name required'},{id:'fLast',msg:'Last name required'},
+    {id:'fEmail',msg:'Email required'},{id:'fPhone',msg:'Phone required'},
+  ];
+  for(const r of req){
+    if(!document.getElementById(r.id).value.trim()){ errField(r.id,r.msg); return; }
+  }
+  if(!document.getElementById('fEmail').value.includes('@')){ errField('fEmail','Valid email required'); return; }
+
+  // Check if wholesale in cart — need biz info
+  const hasWs = S.cart.some(c=>c.type==='wholesale');
+  if(hasWs && !document.getElementById('fBiz').value.trim()){
+    errField('fBiz','Business name required for wholesale'); return;
+  }
+
+  const btn = document.getElementById('checkoutBtn');
+  btn.disabled=true; btn.innerHTML='<span class="spin"></span> Submitting…';
+
+  const {sub,disc,total} = cartTotals();
+  const name  = document.getElementById('fFirst').value.trim()+' '+document.getElementById('fLast').value.trim();
+  const email = document.getElementById('fEmail').value.trim();
+  const biz   = document.getElementById('fBiz').value.trim();
+
+  // Group cart items by type for payload
+  const wsItems     = S.cart.filter(c=>c.type==='wholesale');
+  const trainingItems = S.cart.filter(c=>c.type==='training');
+  const nutrItems   = S.cart.filter(c=>c.type==='nutrition');
+  const wpItems     = S.cart.filter(c=>c.type==='workout');
+  const merchItems  = S.cart.filter(c=>c.type==='merch');
+
+  const payload = {
+    contact: { name, email, phone: document.getElementById('fPhone').value.trim() },
+    business: {
+      name: biz, type: document.getElementById('fBizType').value,
+      city: document.getElementById('fCity').value.trim(),
+      state: document.getElementById('fState').value.trim(),
+    },
+    cart: S.cart.map(c=>({id:c.id, name:c.name, price:c.price, qty:c.qty, type:c.type, meta:c.meta})),
+    wholesale: wsItems.map(c=>c.wsData).filter(Boolean),
+    training:  trainingItems.map(c=>({id:c.id, name:c.name})),
+    nutrition: nutrItems.map(c=>({id:c.id, name:c.name})),
+    workout:   wpItems.map(c=>({id:c.id, name:c.name})),
+    merch:     merchItems.map(c=>({id:c.id, name:c.name, price:c.price})),
+    discount:  S.disc,
+    subtotal:  sub,
+    discount_amount: disc,
+    total,
+    notes: document.getElementById('fNotes').value.trim(),
+  };
+
+  let orderId, serverOk = false;
+
+  try {
+    const res = await fetch(`${API}/api/orders/full`, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(payload),
+      signal: AbortSignal.timeout(9000)
+    });
+    const data = await res.json();
+    if(data.success){ orderId=data.order_id; serverOk=true; toast('✅ Order logged in Excel!','ok'); }
+    else throw new Error(data.error||'Server error');
+  } catch(err) {
+    console.warn('Server offline, saving locally:', err.message);
+    orderId = 'KC-'+Date.now().toString(36).toUpperCase();
+    const lo = JSON.parse(localStorage.getItem('kc_orders')||'[]');
+    lo.push({...payload, id:orderId, date:new Date().toISOString(), synced:false});
+    localStorage.setItem('kc_orders', JSON.stringify(lo));
+    toast('⚠️ Saved locally — sync when server is online','bad');
+  }
+
+  // Build detail summary
+  const sections = [];
+  if(trainingItems.length) sections.push(`<strong>Training:</strong> ${trainingItems.map(c=>c.name).join(', ')}`);
+  if(nutrItems.length)     sections.push(`<strong>Nutrition:</strong> ${nutrItems.map(c=>c.name).join(', ')}`);
+  if(wpItems.length)       sections.push(`<strong>Workout Plans:</strong> ${wpItems.map(c=>c.name).join(', ')}`);
+  if(merchItems.length)    sections.push(`<strong>Merch:</strong> ${merchItems.map(c=>c.name).join(', ')}`);
+  if(wsItems.length)       sections.push(`<strong>Wholesale:</strong> ${wsItems.map(c=>c.meta).join(', ')}`);
+
+  document.getElementById('modalOid').textContent = 'Order: '+orderId;
+  document.getElementById('modalDetail').innerHTML = `
+    <strong>${name.split(' ')[0]}</strong>, your order totaling <strong style="color:var(--gold)">$${total.toFixed(2)}</strong>
+    ${S.disc?`(${S.disc.pct}% discount applied)`:''}
+    has been received.<br><br>
+    ${sections.join('<br>')}
+    <br><br>We'll email <strong>${email}</strong> within 24 hours to confirm.
+    ${serverOk?'<br><span style="color:var(--green);font-size:.75rem">✅ Logged in Excel datasheet</span>':''}`;
+
+  document.getElementById('overlay').classList.add('open');
+  btn.disabled=false; btn.textContent='Place Order';
+  S.cart=[]; S.disc=null; renderCart();
+}
+
+function errField(id, msg) {
+  const el=document.getElementById(id);
+  if(el){ el.classList.add('err'); el.focus(); setTimeout(()=>el.classList.remove('err'),2500); }
+  toast('✗ '+msg,'bad');
+}
+
+function closeModal(){ document.getElementById('overlay').classList.remove('open'); }
+
+// ── TOASTS ────────────────────────────────────────────────────────────────────
+function toast(msg, type='') {
+  const c=document.getElementById('toasts');
+  const t=document.createElement('div');
+  t.className='toast '+(type||'');
+  t.textContent=msg;
+  c.appendChild(t);
+  requestAnimationFrame(()=>t.classList.add('show'));
+  setTimeout(()=>{ t.classList.remove('show'); setTimeout(()=>t.remove(),300); }, 3500);
+}
+
+// ── ADMIN BAR ─────────────────────────────────────────────────────────────────
+async function fetchStats() {
+  try {
+    const r = await fetch(`${API}/api/excel/stats`,{signal:AbortSignal.timeout(4000)});
+    const d = await r.json();
+    if(!d.success) throw new Error();
+    const s = d.stats;
+    document.getElementById('adminBar').style.display='flex';
+    document.getElementById('abDot').className='ab-dot2 live';
+    document.getElementById('abStatus').textContent='Live';
+    document.getElementById('abOrders').textContent=(s.total_orders||0).toLocaleString();
+    document.getElementById('abRevenue').textContent='$'+(s.revenue||0).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+    document.getElementById('abSignups').textContent=(s.email_signups||0).toLocaleString();
+  } catch {
+    document.getElementById('adminBar').style.display='flex';
+    document.getElementById('abDot').className='ab-dot2 off';
+    document.getElementById('abStatus').textContent='Offline (local)';
+    document.getElementById('abOrders').textContent='—';
+    document.getElementById('abRevenue').textContent='—';
+    document.getElementById('abSignups').textContent='—';
+  }
+}
+
+function dlExcel(e) {
+  e.preventDefault();
+  fetch(`${API}/api/excel/download`,{signal:AbortSignal.timeout(4000)})
+    .then(r=>{ if(!r.ok) throw new Error(); return r.blob(); })
+    .then(b=>{ const a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download='KilaCombs_Data_'+new Date().toISOString().slice(0,10)+'.xlsx'; a.click(); toast('📊 Excel downloaded!','ok'); })
+    .catch(()=>toast('Start server to download Excel','bad'));
+}
+
+// ── NAV ACTIVE ON SCROLL ──────────────────────────────────────────────────────
+const navLinks = document.querySelectorAll('.nav-link:not(.nav-cta)');
+const sections = ['home','training','nutrition','workout','merch','wholesale'];
+window.addEventListener('scroll',()=>{
+  const y = window.scrollY + 120;
+  let current = 'home';
+  sections.forEach(id=>{ const el=document.getElementById(id); if(el&&el.offsetTop<=y) current=id; });
+  navLinks.forEach(l=>{ l.classList.toggle('active', l.getAttribute('href')==='#'+current); });
+},{passive:true});
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+renderPkgs();
+renderWPs();
+renderMerch();
+renderFlavors();
+renderCart();
+fetchStats();
+setInterval(fetchStats, 30000);
+</script>
+</body>
+</html>
